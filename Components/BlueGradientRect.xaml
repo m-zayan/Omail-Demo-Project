@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:Omail.Components"
              mc:Ignorable="d" 
              d:DesignHeight="{Binding Width}" d:DesignWidth="{Binding Height}">
-    <Rectangle Width="{Binding Width}" Height="{Binding Height}">
+    <Rectangle>
         <Rectangle.Fill>
             <LinearGradientBrush EndPoint="0.3,1" StartPoint="0.5,0">
                 <GradientStop Color="#FF2281D1"/>

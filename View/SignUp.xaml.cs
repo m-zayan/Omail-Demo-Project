@@ -13,17 +13,27 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Omail.Components
+namespace Omail.View
 {
     /// <summary>
-    /// Interaction logic for BlueGradientRect.xaml
+    /// Interaction logic for SignUp.xaml
     /// </summary>
-    public partial class BlueGradientRect : UserControl
+    public partial class SignUp : Page
     {
-        public BlueGradientRect()
+        public SignUp()
         {
             InitializeComponent();
-            this.DataContext = this;
+        }
+
+        private void Next(object sender, RoutedEventArgs evnt)
+        {
+
+        }
+
+        private void ToSignIn(object sender, RoutedEventArgs evnt)
+        {
+            SignIn signIn = new SignIn();
+            NavigationService.Navigate(signIn);
         }
 
     }

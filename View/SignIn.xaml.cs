@@ -12,41 +12,28 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using Omail.Components;
-using Omail.API.API_Validator;
-namespace Omail
+namespace Omail.View
 {
-
-    public partial class MainWindow :Window
+    /// <summary>
+    /// Interaction logic for MainPage.xaml
+    /// </summary>
+    public partial class SignIn : Page
     {
-        public MainWindow()
+        public SignIn()
         {
             InitializeComponent();
         }
-        public event PropertyChangedEventHandler propertyChanged;
-
-        
-        public void OnPropertyChanged([CallerMemberName] string propertyName=null)
-        {
-            propertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-        
         private void Login(object sender, RoutedEventArgs evnt)
         {
-
-
             string username = Username.Value;
             string password = Password.Value;
-
-            
             MessageBox.Show(password);
-           
-
-
-
         }
-
+        private void ToSignUp(object sender, RoutedEventArgs evnt)
+        {
+            SignUp signup = new SignUp();
+            NavigationService.Navigate(signup);
+        }
     }
 }

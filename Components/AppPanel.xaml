@@ -6,26 +6,33 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:Omail.Components"
              mc:Ignorable="d" 
-             d:DesignHeight="50" d:DesignWidth="800"
+             d:DesignHeight="40" d:DesignWidth="1400"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontWeight="Regular"
              TextElement.FontSize="13"
              TextOptions.TextFormattingMode="Ideal"
              TextOptions.TextRenderingMode="Auto"
-             Background="{DynamicResource MaterialDesignPaper}"
              FontFamily="{DynamicResource MaterialDesignFont}">
-    <StackPanel Background="WhiteSmoke">
+    
+    <StackPanel Background="WhiteSmoke" Height="40" Width="1400">
         <Grid Height="40">
-            <StackPanel HorizontalAlignment="Left" Margin="20 0">
+            <StackPanel HorizontalAlignment="Left" Margin="100 0">
                 <ComboBox FontSize="15" Width="50" Foreground="#FFA2A2A2" SelectedIndex="0" VerticalAlignment="Center">
                     <ComboBoxItem Content="EN"/>
                 </ComboBox>
             </StackPanel>
+            <StackPanel HorizontalAlignment="Left" Margin="20 0">
+                <Image Width="40" Source="{DynamicResource Logo}"/>
+            </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                <Button Content="FAQ" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
-                <Button Content="CONTACT" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FFA2A2A2" FontSize="15" FontWeight="Bold" VerticalAlignment="Center"/>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}">
-                    <materialDesign:PackIcon Kind="Power" Foreground="#FFA2A2A2" Width="25" Height="25" />
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Click="WindowMinimize">
+                    <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#FFA2A2A2" Width="25" Height="25" />
+                </Button>
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Click="WindowMaximize">
+                    <materialDesign:PackIcon Kind="WindowMaximize" Foreground="#FFA2A2A2" Width="25" Height="25" />
+                </Button>
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Click="Exit">
+                    <materialDesign:PackIcon Kind="WindowClose" Foreground="#FFA2A2A2" Width="25" Height="25" />
                 </Button>
             </StackPanel>
         </Grid>
