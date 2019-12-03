@@ -17,52 +17,25 @@
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        Background="{DynamicResource MaterialDesignPaper}"
+        MouseDown="Window_MouseDown"
         FontFamily="{DynamicResource MaterialDesignFont}"
         >
-
     <Grid>
-        <StackPanel VerticalAlignment="Top" >
-            <Components:AppPanel/>
-        </StackPanel>
-        <Components:BlueGradientRect Height="700" Margin="0,10,0,0"/>
- 
-        <StackPanel Height="400" HorizontalAlignment="Left" Margin="50,100,0,0">
-
-            <TextBlock Style="{DynamicResource MaterialDesignButtonTextBlock}" TextAlignment="Center" Text="Existing Organization" Foreground="#66CCFF" VerticalAlignment="Top" FontSize="26"
-                    />
-            <RadioButton Checked="ToSignIn" Style="{DynamicResource MaterialDesignTabRadioButton}" x:Name="ExistingOrgBTN" Height="300" Width="300" Margin="20">
-                <RadioButton.Content>
-                    <Image Source="{DynamicResource ExistOrg}" Stretch="Fill"/>
-                </RadioButton.Content>
-            </RadioButton>
-            <Components:BlueGradientRect Width="700"/>
-        </StackPanel>
-
-        <StackPanel Height="400" HorizontalAlignment="Right" Margin="0,100,0,0">
-
-            <TextBlock Style="{DynamicResource MaterialDesignButtonTextBlock}" TextAlignment="Center" Text="New Organization" Foreground="#66CCFF" VerticalAlignment="Top" FontSize="26"
-                    />
-            <RadioButton Style="{DynamicResource MaterialDesignTabRadioButton}" x:Name="NewOrg" Height="300" Width="300" Margin="20">
-                <RadioButton.Content>
-                    <Image Source="{DynamicResource NewOrg}" Stretch="Fill"/>
-                </RadioButton.Content>
-            </RadioButton>
-            <Components:BlueGradientRect Width="700"/>
-        </StackPanel>
-
-        <RadioButton x:Name="ButtomText" Checked="ButtomTextChecked" HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignToolRadioButton}">
-            <TextBlock>
-                <TextBlock FontSize="15" Style="{DynamicResource MaterialDesignButtonTextBlock}">
-                    <Run FontWeight="Bold" Text="Omail -" />
-                    <Run Text=" Organization mailing system under your control" FontStyle="Italic" />
-                </TextBlock>
-            </TextBlock>
-        </RadioButton>
-
-        <Frame x:Name="Main"/>
+        <materialDesign:Transitioner SelectedIndex="0" AutoApplyTransitionOrigins="True">
+            <Grid>
+                <local:StartPage/>
+            </Grid>
+            <materialDesign:TransitionerSlide>
+                <materialDesign:TransitionerSlide.BackwardWipe>
+                    <materialDesign:CircleWipe/>
+                </materialDesign:TransitionerSlide.BackwardWipe>
+                <materialDesign:TransitionerSlide.ForwardWipe>
+                    <materialDesign:SlideWipe Direction="Right"/>
+                </materialDesign:TransitionerSlide.ForwardWipe>
+                <local:SignIn/>
+            </materialDesign:TransitionerSlide>
+        </materialDesign:Transitioner>
     </Grid>
-
 
 </Window>
     

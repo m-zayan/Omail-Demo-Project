@@ -18,14 +18,10 @@ namespace Omail.View
         {
             InitializeComponent();
         }
-        private void ToSignIn(object sender, RoutedEventArgs evnt)
-        {
-            Main.Navigate(new Uri("View/SignIn.xaml", UriKind.Relative));
-        }
-        private void ButtomTextChecked(object sender, RoutedEventArgs evnt)
-        {
-            ButtomText.IsChecked = false;
-        }
 
+        private void Window_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            DragMove();
+        }
     }
 }

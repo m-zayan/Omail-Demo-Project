@@ -12,18 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Omail.Components;
+
 namespace Omail.View
 {
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    /// Interaction logic for StartPage.xaml
     /// </summary>
-    public partial class SignIn : UserControl
+    public partial class StartPage : UserControl
     {
-        public SignIn()
+        public StartPage()
         {
             InitializeComponent();
         }
-
     }
 }

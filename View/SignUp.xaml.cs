@@ -18,23 +18,11 @@ namespace Omail.View
     /// <summary>
     /// Interaction logic for SignUp.xaml
     /// </summary>
-    public partial class SignUp : Page
+    public partial class SignUp : UserControl
     {
         public SignUp()
         {
             InitializeComponent();
         }
-
-        private void Next(object sender, RoutedEventArgs evnt)
-        {
-
-        }
-
-        private void ToSignIn(object sender, RoutedEventArgs evnt)
-        {
-            SignIn signIn = new SignIn();
-            NavigationService.Navigate(signIn);
-        }
-
     }
 }
