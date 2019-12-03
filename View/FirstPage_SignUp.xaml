@@ -48,7 +48,7 @@
 
                 <StackPanel Width="600" Height="200" Margin="0,50,0,0">
 
-                    <Button Margin="300,80,0,0" Style="{DynamicResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Bottom" Width="100" Height="25" Content="Next " />
+                    <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Margin="300,80,0,0" Style="{DynamicResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Bottom" Width="100" Height="25" Content="Next " />
 
                 </StackPanel>
 

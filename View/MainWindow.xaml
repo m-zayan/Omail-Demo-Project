@@ -27,13 +27,15 @@
             </Grid>
             <materialDesign:TransitionerSlide>
                 <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:CircleWipe/>
+                    <materialDesign:SlideWipe Direction="Left"/>
                 </materialDesign:TransitionerSlide.BackwardWipe>
                 <materialDesign:TransitionerSlide.ForwardWipe>
                     <materialDesign:SlideWipe Direction="Right"/>
                 </materialDesign:TransitionerSlide.ForwardWipe>
                 <local:SignIn/>
             </materialDesign:TransitionerSlide>
+            <local:FirstPage_SignUp/>
+            <local:SignUp/>
         </materialDesign:Transitioner>
     </Grid>
 

@@ -35,7 +35,7 @@
                 <!--Sign In & Sign Up Navigation Button-->
                 <StackPanel Orientation="Horizontal">
                     <RadioButton IsChecked="True"  Content="Sign In" Style="{DynamicResource MaterialDesignTabRadioButton}" Height="30" Width="250" HorizontalContentAlignment="Center" Margin="70,0,0,0" />
-                    <RadioButton x:Name="SignUp"  Content="Sign Up" Style="{DynamicResource MaterialDesignTabRadioButton}"  Height="30" Width="250" HorizontalContentAlignment="Center" Margin="0,0,0,0" />
+                    <RadioButton Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" x:Name="SignUp"  Content="Sign Up" Style="{DynamicResource MaterialDesignTabRadioButton}"  Height="30" Width="250" HorizontalContentAlignment="Center" Margin="0,0,0,0" />
                 </StackPanel>
 
                 <StackPanel>
