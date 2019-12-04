@@ -9,16 +9,23 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Automation;
+using MaterialDesignThemes.Wpf.Transitions;
+using Omail.API;
 namespace Omail.View
 {
 
     public partial class MainWindow :Window
     {
+
         public MainWindow()
         {
+            
             InitializeComponent();
+            this.DataContext = this;
+
         }
 
+       
         private void Window_MouseDown(object sender, MouseButtonEventArgs e)
         {
             DragMove();

@@ -23,10 +23,6 @@ namespace Omail.Components
             this.DataContext = this;
         }
 
-        public void Got_Focus(object sender,EventArgs evnt)
-        {
-
-        }
         public string Value { get { return text.Text; } set { } }
 
         public string ID { get; set; }

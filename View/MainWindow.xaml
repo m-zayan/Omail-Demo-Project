@@ -12,31 +12,22 @@
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        MouseDown="Window_MouseDown"
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
-        MouseDown="Window_MouseDown"
         FontFamily="{DynamicResource MaterialDesignFont}"
         >
     <Grid>
-        <materialDesign:Transitioner SelectedIndex="0" AutoApplyTransitionOrigins="True">
-            <Grid>
-                <local:StartPage/>
-            </Grid>
-            <materialDesign:TransitionerSlide>
-                <materialDesign:TransitionerSlide.BackwardWipe>
-                    <materialDesign:SlideWipe Direction="Left"/>
-                </materialDesign:TransitionerSlide.BackwardWipe>
-                <materialDesign:TransitionerSlide.ForwardWipe>
-                    <materialDesign:SlideWipe Direction="Right"/>
-                </materialDesign:TransitionerSlide.ForwardWipe>
-                <local:SignIn/>
-            </materialDesign:TransitionerSlide>
+        <materialDesign:Transitioner x:Name="Slide"  SelectedIndex="2" AutoApplyTransitionOrigins="True" IsSynchronizedWithCurrentItem="True">
+            <local:StartPage/>
+            <local:SignIn/>
             <local:FirstPage_SignUp/>
             <local:SignUp/>
         </materialDesign:Transitioner>
+  
     </Grid>
 
 </Window>

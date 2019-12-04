@@ -23,6 +23,7 @@ namespace Omail.View
         public SignIn()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
 
     }

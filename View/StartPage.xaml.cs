@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Omail.API;
 namespace Omail.View
 {
     /// <summary>
@@ -23,6 +23,9 @@ namespace Omail.View
         public StartPage()
         {
             InitializeComponent();
+            this.DataContext = this;
+            
         }
+
     }
 }

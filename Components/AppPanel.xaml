@@ -22,16 +22,16 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel HorizontalAlignment="Left" Margin="20 0">
-                <Image Width="40" Source="{DynamicResource Logo}"/>
+                <Image Width="40" Source="{StaticResource Logo}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="20 0">
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Click="WindowMinimize">
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                     <materialDesign:PackIcon Kind="WindowMinimize" Foreground="#FFA2A2A2" Width="25" Height="25" />
                 </Button>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Click="WindowMaximize">
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}">
                     <materialDesign:PackIcon Kind="WindowMaximize" Foreground="#FFA2A2A2" Width="25" Height="25" />
                 </Button>
-                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{DynamicResource MaterialDesignFloatingActionMiniAccentButton}" Click="Exit">
+                <Button Background="{x:Null}" BorderBrush="{x:Null}" VerticalAlignment="Center" Style="{StaticResource MaterialDesignFloatingActionMiniAccentButton}" Click="Exit">
                     <materialDesign:PackIcon Kind="WindowClose" Foreground="#FFA2A2A2" Width="25" Height="25" />
                 </Button>
             </StackPanel>

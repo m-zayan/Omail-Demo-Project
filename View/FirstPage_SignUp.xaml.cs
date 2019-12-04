@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using Omail.API;
 namespace Omail.View
 {
     /// <summary>
@@ -23,7 +23,28 @@ namespace Omail.View
         public FirstPage_SignUp()
         {
             InitializeComponent();
+            this.DataContext = this;
         }
+        private void addData(object sender,RoutedEventArgs e)
+        {
+            CRUD add = new CRUD();
 
+            string first= FirstName.Value;
+            string last = LastName.Value;
+            string pass = Password.Value;
+            string valPass = VerifyPassword.Value;
+            string email = Email.Value;
+
+            if (valPass != pass) {
+                MessageBox.Show("Not Equal");
+                return;
+            }
+            DateTime date = DateTime.Now;
+
+            add.AddNewEmployee((first[0]+last[0]).ToString(), first, last, email,
+             date   , "01129700808", pass, "Male", "0yey");
+
+            MessageBox.Show("Data Added");
+        }
     }
 }
