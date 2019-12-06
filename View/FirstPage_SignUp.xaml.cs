@@ -27,8 +27,8 @@ namespace Omail.View
         }
         private void addData(object sender,RoutedEventArgs e)
         {
-            CRUD add = new CRUD();
-
+            CRUD.Emp add = new CRUD.Emp();
+            
             string first= FirstName.Value;
             string last = LastName.Value;
             string pass = Password.Value;
@@ -41,7 +41,7 @@ namespace Omail.View
             }
             DateTime date = DateTime.Now;
 
-            add.AddNewEmployee((first[0]+last[0]).ToString(), first, last, email,
+            add.AddNewEmployee(first, last, email,
              date   , "01129700808", pass, "Male", "0yey");
 
             MessageBox.Show("Data Added");

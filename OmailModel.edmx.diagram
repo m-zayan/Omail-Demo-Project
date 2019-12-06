@@ -4,24 +4,24 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="bb1dfb90f48a4c708e2bf71686e629e4" Name="Diagram1" ZoomLevel="101">
+      <Diagram DiagramId="6e927a1bb8da43268718df1acd35ab3b" Name="Diagram1">
         <EntityTypeShape EntityType="OmailModel.Department" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OmailModel.Email" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="OmailModel.EmpGroup" Width="1.5" PointX="6" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="OmailModel.EmpGroup" Width="1.5" PointX="6" PointY="2.625" IsExpanded="true" />
         <EntityTypeShape EntityType="OmailModel.Employee" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
         <EntityTypeShape EntityType="OmailModel.Organization" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
         <EntityTypeShape EntityType="OmailModel.Employee_has_Email" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
         <EntityTypeShape EntityType="OmailModel.Employee_In_Group" Width="1.5" PointX="8.25" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="OmailModel.Organization_has_Partner" Width="1.5" PointX="3" PointY="12.25" IsExpanded="true" />
-        <AssociationConnector Association="OmailModel.FK__Employee__DepId__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="OmailModel.FK__Email__Parent__4222D4EF" ManuallyRouted="false" />
-        <AssociationConnector Association="OmailModel.FK__Employee___Email__4AB81AF0" ManuallyRouted="false" />
-        <AssociationConnector Association="OmailModel.FK__Employee___Group__44FF419A" ManuallyRouted="false" />
-        <AssociationConnector Association="OmailModel.FK__Employee___EmpId__440B1D61" ManuallyRouted="false" />
-        <AssociationConnector Association="OmailModel.FK__Employee___EmpId__49C3F6B7" ManuallyRouted="false" />
-        <AssociationConnector Association="OmailModel.FK__Employee__OrgId__3E52440B" ManuallyRouted="false" />
-        <AssociationConnector Association="OmailModel.FK__Organizat__OrgId__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="OmailModel.FK__Organizat__Partn__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="OmailModel.FK__Employee__DepId__4316F928" ManuallyRouted="false" />
+        <AssociationConnector Association="OmailModel.FK__Email__Parent__45F365D3" ManuallyRouted="false" />
+        <AssociationConnector Association="OmailModel.FK__Employee___Email__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="OmailModel.FK__Employee___Group__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="OmailModel.FK__Employee___EmpId__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="OmailModel.FK__Employee___EmpId__4D94879B" ManuallyRouted="false" />
+        <AssociationConnector Association="OmailModel.FK__Employee__OrgId__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="OmailModel.FK__Organizat__OrgId__4BAC3F29" ManuallyRouted="false" />
+        <AssociationConnector Association="OmailModel.FK__Organizat__Partn__4AB81AF0" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

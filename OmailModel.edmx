@@ -69,6 +69,7 @@ warning 6002: The table/view 'Omail.dbo.Employee_has_Email' does not have a prim
           <Property Name="IsSpam" Type="bit" />
           <Property Name="IsSeen" Type="bit" />
           <Property Name="WasDeleted" Type="bit" />
+          <Property Name="IsSent" Type="bit" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Omail.dbo.Employee_In_Group' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -106,7 +107,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           <Property Name="OrgId" Type="int" Nullable="false" />
           <Property Name="SharedVision" Type="nvarchar" MaxLength="4000" />
         </EntityType>
-        <Association Name="FK__Email__Parent__4222D4EF">
+        <Association Name="FK__Email__Parent__45F365D3">
           <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
           <End Role="Email1" Type="Self.Email" Multiplicity="*" />
           <ReferentialConstraint>
@@ -118,7 +119,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee___Email__4AB81AF0">
+        <Association Name="FK__Employee___Email__4E88ABD4">
           <End Role="Email" Type="Self.Email" Multiplicity="1" />
           <End Role="Employee_has_Email" Type="Self.Employee_has_Email" Multiplicity="*" />
           <ReferentialConstraint>
@@ -130,7 +131,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee___EmpId__440B1D61">
+        <Association Name="FK__Employee___EmpId__47DBAE45">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Employee_In_Group" Type="Self.Employee_In_Group" Multiplicity="*" />
           <ReferentialConstraint>
@@ -142,7 +143,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee___EmpId__49C3F6B7">
+        <Association Name="FK__Employee___EmpId__4D94879B">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Employee_has_Email" Type="Self.Employee_has_Email" Multiplicity="*" />
           <ReferentialConstraint>
@@ -154,7 +155,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee___Group__44FF419A">
+        <Association Name="FK__Employee___Group__48CFD27E">
           <End Role="EmpGroup" Type="Self.EmpGroup" Multiplicity="1" />
           <End Role="Employee_In_Group" Type="Self.Employee_In_Group" Multiplicity="*" />
           <ReferentialConstraint>
@@ -166,7 +167,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee__DepId__3F466844">
+        <Association Name="FK__Employee__DepId__4316F928">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -178,7 +179,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee__OrgId__3E52440B">
+        <Association Name="FK__Employee__OrgId__4222D4EF">
           <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -190,7 +191,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Organizat__OrgId__47DBAE45">
+        <Association Name="FK__Organizat__OrgId__4BAC3F29">
           <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
           <End Role="Organization_has_Partner" Type="Self.Organization_has_Partner" Multiplicity="*" />
           <ReferentialConstraint>
@@ -202,7 +203,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Organizat__Partn__46E78A0C">
+        <Association Name="FK__Organizat__Partn__4AB81AF0">
           <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
           <End Role="Organization_has_Partner" Type="Self.Organization_has_Partner" Multiplicity="*" />
           <ReferentialConstraint>
@@ -228,7 +229,8 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
     [Employee_has_Email].[IsSnoozed] AS [IsSnoozed], 
     [Employee_has_Email].[IsSpam] AS [IsSpam], 
     [Employee_has_Email].[IsSeen] AS [IsSeen], 
-    [Employee_has_Email].[WasDeleted] AS [WasDeleted]
+    [Employee_has_Email].[WasDeleted] AS [WasDeleted], 
+    [Employee_has_Email].[IsSent] AS [IsSent]
     FROM [dbo].[Employee_has_Email] AS [Employee_has_Email]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Employee_In_Group" EntityType="Self.Employee_In_Group" store:Type="Tables" store:Schema="dbo">
@@ -245,39 +247,39 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
     [Organization_has_Partner].[SharedVision] AS [SharedVision]
     FROM [dbo].[Organization_has_Partner] AS [Organization_has_Partner]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK__Email__Parent__4222D4EF" Association="Self.FK__Email__Parent__4222D4EF">
+          <AssociationSet Name="FK__Email__Parent__45F365D3" Association="Self.FK__Email__Parent__45F365D3">
             <End Role="Email" EntitySet="Email" />
             <End Role="Email1" EntitySet="Email" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee___Email__4AB81AF0" Association="Self.FK__Employee___Email__4AB81AF0">
+          <AssociationSet Name="FK__Employee___Email__4E88ABD4" Association="Self.FK__Employee___Email__4E88ABD4">
             <End Role="Email" EntitySet="Email" />
             <End Role="Employee_has_Email" EntitySet="Employee_has_Email" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee___EmpId__440B1D61" Association="Self.FK__Employee___EmpId__440B1D61">
+          <AssociationSet Name="FK__Employee___EmpId__47DBAE45" Association="Self.FK__Employee___EmpId__47DBAE45">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Employee_In_Group" EntitySet="Employee_In_Group" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee___EmpId__49C3F6B7" Association="Self.FK__Employee___EmpId__49C3F6B7">
+          <AssociationSet Name="FK__Employee___EmpId__4D94879B" Association="Self.FK__Employee___EmpId__4D94879B">
             <End Role="Employee" EntitySet="Employee" />
             <End Role="Employee_has_Email" EntitySet="Employee_has_Email" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee___Group__44FF419A" Association="Self.FK__Employee___Group__44FF419A">
+          <AssociationSet Name="FK__Employee___Group__48CFD27E" Association="Self.FK__Employee___Group__48CFD27E">
             <End Role="EmpGroup" EntitySet="EmpGroup" />
             <End Role="Employee_In_Group" EntitySet="Employee_In_Group" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee__DepId__3F466844" Association="Self.FK__Employee__DepId__3F466844">
+          <AssociationSet Name="FK__Employee__DepId__4316F928" Association="Self.FK__Employee__DepId__4316F928">
             <End Role="Department" EntitySet="Department" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee__OrgId__3E52440B" Association="Self.FK__Employee__OrgId__3E52440B">
+          <AssociationSet Name="FK__Employee__OrgId__4222D4EF" Association="Self.FK__Employee__OrgId__4222D4EF">
             <End Role="Organization" EntitySet="Organization" />
             <End Role="Employee" EntitySet="Employee" />
           </AssociationSet>
-          <AssociationSet Name="FK__Organizat__OrgId__47DBAE45" Association="Self.FK__Organizat__OrgId__47DBAE45">
+          <AssociationSet Name="FK__Organizat__OrgId__4BAC3F29" Association="Self.FK__Organizat__OrgId__4BAC3F29">
             <End Role="Organization" EntitySet="Organization" />
             <End Role="Organization_has_Partner" EntitySet="Organization_has_Partner" />
           </AssociationSet>
-          <AssociationSet Name="FK__Organizat__Partn__46E78A0C" Association="Self.FK__Organizat__Partn__46E78A0C">
+          <AssociationSet Name="FK__Organizat__Partn__4AB81AF0" Association="Self.FK__Organizat__Partn__4AB81AF0">
             <End Role="Organization" EntitySet="Organization" />
             <End Role="Organization_has_Partner" EntitySet="Organization_has_Partner" />
           </AssociationSet>
@@ -293,7 +295,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           </Key>
           <Property Name="DepId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="DepName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__DepId__3F466844" FromRole="Department" ToRole="Employee" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__DepId__4316F928" FromRole="Department" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Email">
           <Key>
@@ -308,9 +310,9 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           <Property Name="IsGroupMail" Type="Boolean" />
           <Property Name="IsPrivateEmail" Type="Boolean" />
           <Property Name="Parent" Type="Int32" />
-          <NavigationProperty Name="Email1" Relationship="Self.FK__Email__Parent__4222D4EF" FromRole="Email" ToRole="Email1" />
-          <NavigationProperty Name="Email2" Relationship="Self.FK__Email__Parent__4222D4EF" FromRole="Email1" ToRole="Email" />
-          <NavigationProperty Name="Employee_has_Email" Relationship="Self.FK__Employee___Email__4AB81AF0" FromRole="Email" ToRole="Employee_has_Email" />
+          <NavigationProperty Name="Email1" Relationship="Self.FK__Email__Parent__45F365D3" FromRole="Email" ToRole="Email1" />
+          <NavigationProperty Name="Email2" Relationship="Self.FK__Email__Parent__45F365D3" FromRole="Email1" ToRole="Email" />
+          <NavigationProperty Name="Employee_has_Email" Relationship="Self.FK__Employee___Email__4E88ABD4" FromRole="Email" ToRole="Employee_has_Email" />
         </EntityType>
         <EntityType Name="EmpGroup">
           <Key>
@@ -318,7 +320,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           </Key>
           <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GroupName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Employee_In_Group" Relationship="Self.FK__Employee___Group__44FF419A" FromRole="EmpGroup" ToRole="Employee_In_Group" />
+          <NavigationProperty Name="Employee_In_Group" Relationship="Self.FK__Employee___Group__48CFD27E" FromRole="EmpGroup" ToRole="Employee_In_Group" />
         </EntityType>
         <EntityType Name="Employee">
           <Key>
@@ -341,10 +343,10 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           <Property Name="IsOrgManger" Type="Boolean" />
           <Property Name="OrgId" Type="Int32" />
           <Property Name="DepId" Type="Int32" />
-          <NavigationProperty Name="Department" Relationship="Self.FK__Employee__DepId__3F466844" FromRole="Employee" ToRole="Department" />
-          <NavigationProperty Name="Employee_In_Group" Relationship="Self.FK__Employee___EmpId__440B1D61" FromRole="Employee" ToRole="Employee_In_Group" />
-          <NavigationProperty Name="Employee_has_Email" Relationship="Self.FK__Employee___EmpId__49C3F6B7" FromRole="Employee" ToRole="Employee_has_Email" />
-          <NavigationProperty Name="Organization" Relationship="Self.FK__Employee__OrgId__3E52440B" FromRole="Employee" ToRole="Organization" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Employee__DepId__4316F928" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Employee_In_Group" Relationship="Self.FK__Employee___EmpId__47DBAE45" FromRole="Employee" ToRole="Employee_In_Group" />
+          <NavigationProperty Name="Employee_has_Email" Relationship="Self.FK__Employee___EmpId__4D94879B" FromRole="Employee" ToRole="Employee_has_Email" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK__Employee__OrgId__4222D4EF" FromRole="Employee" ToRole="Organization" />
         </EntityType>
         <EntityType Name="Organization">
           <Key>
@@ -359,9 +361,9 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           <Property Name="Latitude" Type="Geometry" />
           <Property Name="OrgType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
           <Property Name="HasOrgCode" Type="Boolean" />
-          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__OrgId__3E52440B" FromRole="Organization" ToRole="Employee" />
-          <NavigationProperty Name="Organization_has_Partner" Relationship="Self.FK__Organizat__OrgId__47DBAE45" FromRole="Organization" ToRole="Organization_has_Partner" />
-          <NavigationProperty Name="Organization_has_Partner1" Relationship="Self.FK__Organizat__Partn__46E78A0C" FromRole="Organization" ToRole="Organization_has_Partner" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__OrgId__4222D4EF" FromRole="Organization" ToRole="Employee" />
+          <NavigationProperty Name="Organization_has_Partner" Relationship="Self.FK__Organizat__OrgId__4BAC3F29" FromRole="Organization" ToRole="Organization_has_Partner" />
+          <NavigationProperty Name="Organization_has_Partner1" Relationship="Self.FK__Organizat__Partn__4AB81AF0" FromRole="Organization" ToRole="Organization_has_Partner" />
         </EntityType>
         <EntityType Name="Employee_has_Email">
           <Key>
@@ -375,8 +377,9 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           <Property Name="IsSpam" Type="Boolean" />
           <Property Name="IsSeen" Type="Boolean" />
           <Property Name="WasDeleted" Type="Boolean" />
-          <NavigationProperty Name="Email" Relationship="Self.FK__Employee___Email__4AB81AF0" FromRole="Employee_has_Email" ToRole="Email" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee___EmpId__49C3F6B7" FromRole="Employee_has_Email" ToRole="Employee" />
+          <Property Name="IsSent" Type="Boolean" />
+          <NavigationProperty Name="Email" Relationship="Self.FK__Employee___Email__4E88ABD4" FromRole="Employee_has_Email" ToRole="Email" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee___EmpId__4D94879B" FromRole="Employee_has_Email" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Employee_In_Group">
           <Key>
@@ -386,8 +389,8 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           <Property Name="EmpId" Type="Int32" Nullable="false" />
           <Property Name="GroupId" Type="Int32" Nullable="false" />
           <Property Name="ProjectName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="EmpGroup" Relationship="Self.FK__Employee___Group__44FF419A" FromRole="Employee_In_Group" ToRole="EmpGroup" />
-          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee___EmpId__440B1D61" FromRole="Employee_In_Group" ToRole="Employee" />
+          <NavigationProperty Name="EmpGroup" Relationship="Self.FK__Employee___Group__48CFD27E" FromRole="Employee_In_Group" ToRole="EmpGroup" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee___EmpId__47DBAE45" FromRole="Employee_In_Group" ToRole="Employee" />
         </EntityType>
         <EntityType Name="Organization_has_Partner">
           <Key>
@@ -397,10 +400,10 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           <Property Name="PartnerId" Type="Int32" Nullable="false" />
           <Property Name="OrgId" Type="Int32" Nullable="false" />
           <Property Name="SharedVision" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Organization" Relationship="Self.FK__Organizat__OrgId__47DBAE45" FromRole="Organization_has_Partner" ToRole="Organization" />
-          <NavigationProperty Name="Organization1" Relationship="Self.FK__Organizat__Partn__46E78A0C" FromRole="Organization_has_Partner" ToRole="Organization" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK__Organizat__OrgId__4BAC3F29" FromRole="Organization_has_Partner" ToRole="Organization" />
+          <NavigationProperty Name="Organization1" Relationship="Self.FK__Organizat__Partn__4AB81AF0" FromRole="Organization_has_Partner" ToRole="Organization" />
         </EntityType>
-        <Association Name="FK__Employee__DepId__3F466844">
+        <Association Name="FK__Employee__DepId__4316F928">
           <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -412,7 +415,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Email__Parent__4222D4EF">
+        <Association Name="FK__Email__Parent__45F365D3">
           <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
           <End Role="Email1" Type="Self.Email" Multiplicity="*" />
           <ReferentialConstraint>
@@ -424,7 +427,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee___Email__4AB81AF0">
+        <Association Name="FK__Employee___Email__4E88ABD4">
           <End Role="Email" Type="Self.Email" Multiplicity="1" />
           <End Role="Employee_has_Email" Type="Self.Employee_has_Email" Multiplicity="*" />
           <ReferentialConstraint>
@@ -436,7 +439,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee___Group__44FF419A">
+        <Association Name="FK__Employee___Group__48CFD27E">
           <End Role="EmpGroup" Type="Self.EmpGroup" Multiplicity="1" />
           <End Role="Employee_In_Group" Type="Self.Employee_In_Group" Multiplicity="*" />
           <ReferentialConstraint>
@@ -448,7 +451,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee___EmpId__440B1D61">
+        <Association Name="FK__Employee___EmpId__47DBAE45">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Employee_In_Group" Type="Self.Employee_In_Group" Multiplicity="*" />
           <ReferentialConstraint>
@@ -460,7 +463,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee___EmpId__49C3F6B7">
+        <Association Name="FK__Employee___EmpId__4D94879B">
           <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
           <End Role="Employee_has_Email" Type="Self.Employee_has_Email" Multiplicity="*" />
           <ReferentialConstraint>
@@ -472,7 +475,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Employee__OrgId__3E52440B">
+        <Association Name="FK__Employee__OrgId__4222D4EF">
           <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
           <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
           <ReferentialConstraint>
@@ -484,7 +487,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Organizat__OrgId__47DBAE45">
+        <Association Name="FK__Organizat__OrgId__4BAC3F29">
           <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
           <End Role="Organization_has_Partner" Type="Self.Organization_has_Partner" Multiplicity="*" />
           <ReferentialConstraint>
@@ -496,7 +499,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Organizat__Partn__46E78A0C">
+        <Association Name="FK__Organizat__Partn__4AB81AF0">
           <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
           <End Role="Organization_has_Partner" Type="Self.Organization_has_Partner" Multiplicity="*" />
           <ReferentialConstraint>
@@ -508,7 +511,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Omail_Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="OmailEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Departments" EntityType="Self.Department" />
           <EntitySet Name="Emails" EntityType="Self.Email" />
           <EntitySet Name="EmpGroups" EntityType="Self.EmpGroup" />
@@ -517,39 +520,39 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
           <EntitySet Name="Employee_has_Email" EntityType="Self.Employee_has_Email" />
           <EntitySet Name="Employee_In_Group" EntityType="Self.Employee_In_Group" />
           <EntitySet Name="Organization_has_Partner" EntityType="Self.Organization_has_Partner" />
-          <AssociationSet Name="FK__Employee__DepId__3F466844" Association="Self.FK__Employee__DepId__3F466844">
+          <AssociationSet Name="FK__Employee__DepId__4316F928" Association="Self.FK__Employee__DepId__4316F928">
             <End Role="Department" EntitySet="Departments" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Email__Parent__4222D4EF" Association="Self.FK__Email__Parent__4222D4EF">
+          <AssociationSet Name="FK__Email__Parent__45F365D3" Association="Self.FK__Email__Parent__45F365D3">
             <End Role="Email" EntitySet="Emails" />
             <End Role="Email1" EntitySet="Emails" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee___Email__4AB81AF0" Association="Self.FK__Employee___Email__4AB81AF0">
+          <AssociationSet Name="FK__Employee___Email__4E88ABD4" Association="Self.FK__Employee___Email__4E88ABD4">
             <End Role="Email" EntitySet="Emails" />
             <End Role="Employee_has_Email" EntitySet="Employee_has_Email" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee___Group__44FF419A" Association="Self.FK__Employee___Group__44FF419A">
+          <AssociationSet Name="FK__Employee___Group__48CFD27E" Association="Self.FK__Employee___Group__48CFD27E">
             <End Role="EmpGroup" EntitySet="EmpGroups" />
             <End Role="Employee_In_Group" EntitySet="Employee_In_Group" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee___EmpId__440B1D61" Association="Self.FK__Employee___EmpId__440B1D61">
+          <AssociationSet Name="FK__Employee___EmpId__47DBAE45" Association="Self.FK__Employee___EmpId__47DBAE45">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Employee_In_Group" EntitySet="Employee_In_Group" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee___EmpId__49C3F6B7" Association="Self.FK__Employee___EmpId__49C3F6B7">
+          <AssociationSet Name="FK__Employee___EmpId__4D94879B" Association="Self.FK__Employee___EmpId__4D94879B">
             <End Role="Employee" EntitySet="Employees" />
             <End Role="Employee_has_Email" EntitySet="Employee_has_Email" />
           </AssociationSet>
-          <AssociationSet Name="FK__Employee__OrgId__3E52440B" Association="Self.FK__Employee__OrgId__3E52440B">
+          <AssociationSet Name="FK__Employee__OrgId__4222D4EF" Association="Self.FK__Employee__OrgId__4222D4EF">
             <End Role="Organization" EntitySet="Organizations" />
             <End Role="Employee" EntitySet="Employees" />
           </AssociationSet>
-          <AssociationSet Name="FK__Organizat__OrgId__47DBAE45" Association="Self.FK__Organizat__OrgId__47DBAE45">
+          <AssociationSet Name="FK__Organizat__OrgId__4BAC3F29" Association="Self.FK__Organizat__OrgId__4BAC3F29">
             <End Role="Organization" EntitySet="Organizations" />
             <End Role="Organization_has_Partner" EntitySet="Organization_has_Partner" />
           </AssociationSet>
-          <AssociationSet Name="FK__Organizat__Partn__46E78A0C" Association="Self.FK__Organizat__Partn__46E78A0C">
+          <AssociationSet Name="FK__Organizat__Partn__4AB81AF0" Association="Self.FK__Organizat__Partn__4AB81AF0">
             <End Role="Organization" EntitySet="Organizations" />
             <End Role="Organization_has_Partner" EntitySet="Organization_has_Partner" />
           </AssociationSet>
@@ -559,7 +562,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="OmailModelStoreContainer" CdmEntityContainer="Omail_Entities">
+        <EntityContainerMapping StorageEntityContainer="OmailModelStoreContainer" CdmEntityContainer="OmailEntities">
           <EntitySetMapping Name="Departments">
             <EntityTypeMapping TypeName="OmailModel.Department">
               <MappingFragment StoreEntitySet="Department">
@@ -639,6 +642,7 @@ warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have 
                 <ScalarProperty Name="IsSpam" ColumnName="IsSpam" />
                 <ScalarProperty Name="IsSeen" ColumnName="IsSeen" />
                 <ScalarProperty Name="WasDeleted" ColumnName="WasDeleted" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

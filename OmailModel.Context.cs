@@ -13,10 +13,10 @@ namespace Omail
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Omail_Entities : DbContext
+    public partial class OmailEntities : DbContext
     {
-        public Omail_Entities()
-            : base("name=Omail_Entities")
+        public OmailEntities()
+            : base("name=OmailEntities")
         {
         }
     
