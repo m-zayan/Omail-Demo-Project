@@ -21,11 +21,13 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         >
     <Grid>
-        <materialDesign:Transitioner x:Name="Slide"  SelectedIndex="1" AutoApplyTransitionOrigins="True" IsSynchronizedWithCurrentItem="True">
+        <materialDesign:Transitioner x:Name="Slide"  SelectedIndex="4" AutoApplyTransitionOrigins="True" IsSynchronizedWithCurrentItem="True">
             <local:StartPage/>
             <local:SignIn/>
             <local:FirstPage_SignUp/>
             <local:SignUp/>
+            <local:Create_Org_FirstPage/>
+            <local:Create_Org/>
         </materialDesign:Transitioner>
   
     </Grid>

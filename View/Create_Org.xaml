@@ -17,5 +17,53 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1.5*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2.5*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <Components:BlueGradientRect Grid.ColumnSpan="2" Grid.RowSpan="3"/>
+        <Components:AppPanel Grid.ColumnSpan="2" VerticalAlignment="Top"/>
+        <Image Source="{StaticResource NewOrg}" HorizontalAlignment="Center" Grid.ColumnSpan="2" Margin="0,100,0,0" />
+       
+            <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Foreground="White" Text="Add Logo" FontSize="15" Margin="100 20 0 0"/>
+                <CheckBox FontWeight="DemiBold"  Style="{StaticResource MaterialDesignUserForegroundCheckBox}" Foreground="White" x:Name="SkipLogo" Unchecked="SkipLogo_Unchecked" Checked="SkipLogo_Checked" Content="Skip" FontSize="10" Margin="30 25 0 0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                <Button x:Name="ImageButton" Click="Load_Image" Content="Choose File" FontSize="10" Margin="100 20 0 0"/>
+                <TextBlock Foreground="White" x:Name="ImageFile" Text="No file chosen" FontSize="10" Margin="30 25 0 0"/>
+            </StackPanel>
+            </StackPanel>
+        <Image x:Name="Image" Margin="100,120,0,0" Grid.RowSpan="3" Grid.ColumnSpan="2" HorizontalAlignment="Left" Width="200" Height="200"/>
+        <Border Background="White" CornerRadius="70,70,70,70" Width="680" Height="300" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="0,200,0,0">
+            
+            <StackPanel Grid.Row="2" >
+                <StackPanel Orientation="Horizontal" Margin="60,20,0,0">
+                <TextBlock Text="Structure : " FontSize="15"/>
+                <CheckBox x:Name="SkipStructure" Unchecked="SkipStructureUnchecked" Checked="SkipStructureChecked" FontWeight="DemiBold"  Content="Skip" Margin="15 0 0 0" />
+                </StackPanel>
+               
+                <StackPanel>
+                    <Components:TextLabel x:Name="OM" Hint="Organization Managers : Defulte is 1"/>
+                    <Components:TextLabel x:Name="GM" Hint="Group Managers : Defulte is 0"/>
+                    <Components:TextLabel x:Name="Emp" Hint="Employees : Defulte is 10"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="180,20,0,0">
+                    <ComboBox materialDesign:HintAssist.Hint="Organization Type" Width="320"  Name="OrgType" >
+                        <ComboBoxItem>Startup</ComboBoxItem>
+                        <ComboBoxItem>Organiztion</ComboBoxItem>
+                    </ComboBox>
+                </StackPanel>
+            </StackPanel>
 
+        </Border>
+        <Button x:Name="FinishButton" Content="Finish" Width="100" Height="25" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="500,0,0,150"  VerticalAlignment="Bottom"/>
+    </Grid>
 </UserControl>
