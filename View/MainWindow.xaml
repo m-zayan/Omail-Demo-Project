@@ -21,7 +21,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         >
     <Grid>
-        <materialDesign:Transitioner x:Name="Slide"  SelectedIndex="2" AutoApplyTransitionOrigins="True" IsSynchronizedWithCurrentItem="True">
+        <materialDesign:Transitioner x:Name="Slide"  SelectedIndex="1" AutoApplyTransitionOrigins="True" IsSynchronizedWithCurrentItem="True">
             <local:StartPage/>
             <local:SignIn/>
             <local:FirstPage_SignUp/>

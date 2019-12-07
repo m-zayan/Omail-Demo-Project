@@ -40,7 +40,7 @@
 
                 <StackPanel>
                     <!--Sign In Labels-->
-                    <Components:TextLabel   x:Name="Username"  Hint="Username" HorizontalAlignment="Center" Margin="0,100,0,0"/>
+                    <Components:TextLabel   x:Name="Email"  Hint="Email" HorizontalAlignment="Center" Margin="0,100,0,0"/>
                     <Components:PasswordLabel x:Name="Password"  Hint="Password"/>
                 </StackPanel>
 
@@ -48,7 +48,7 @@
 
                     <TextBlock><Hyperlink><Run Text="Forgot Password ?"/></Hyperlink></TextBlock>
                     <CheckBox  Margin="0,20,0,0"  Content="Keep me signed in" />
-                    <Button Margin="0,50,0,0" Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Bottom" Width="100" Height="25" Content="Sign In"/>
+                    <Button Click="SignIn_Button_Click" Margin="0,50,0,0" Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Bottom" Width="100" Height="25" Content="Sign In"/>
 
 
                 </StackPanel>

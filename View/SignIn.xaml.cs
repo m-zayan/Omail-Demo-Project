@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Omail.Components;
+using Omail.API;
 namespace Omail.View
 {
     /// <summary>
@@ -26,5 +27,16 @@ namespace Omail.View
             this.DataContext = this;
         }
 
+        private void SignIn_Button_Click(object sender, RoutedEventArgs e)
+        {
+            CRUD.Emp data = new CRUD.Emp();
+            string email = Email.Value;
+            string pass = Password.Value;
+            Employee emp = data.CheckSignIn(email, pass);
+            if (emp != null)
+            {
+                MessageBox.Show("Welcome Mr " + emp.EmpName + " (:");
+            }
+        }
     }
 }
