@@ -7,12 +7,10 @@ _________
 
 **Omail System** is a Windows app made to facilitate communication needs at Organizations & Startups.
 
-### Authors &#9997;	
+## Contributors ✨
+
 __________________
 <pre>
-  &#9673; Mohamed Osama Mohamed Zayan
-  &#9673; Mohammed Ali Abdullah El - Feky  	 
-  &#9673; Omar Hafez Abdullah Hafez  
+  &#9673; Mohamed Osama Mohamed Zayan 
   &#9673; Moataz Gamal Abdel Gawad El Sayed  
-  &#9673; Mahmoud Mohamed Hosny Mostafa
 </pre>
