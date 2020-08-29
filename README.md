@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # __Credit System's UI Images__
 &#9673; Logo Icon made by [kiranshastry](https://www.flaticon.com/authors/kiranshastry) from [flaticon](www.flaticon.com)<br>
 &#9673; Seo-And-Business & UseInterface Icons made by [srip](https://www.flaticon.com/authors/srip) from [flaticon](www.flaticon.com)
