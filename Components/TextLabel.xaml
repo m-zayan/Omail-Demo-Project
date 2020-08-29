@@ -17,7 +17,7 @@
 
 
     <TextBox Name="text" Text="{Binding Value}" materialDesign:HintAssist.Hint="{Binding Hint}"
-                 Style="{DynamicResource MaterialDesignFloatingHintTextBox}" Width="320" Height="50"/>
+                 Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="320" Height="50"/>
 
 
 

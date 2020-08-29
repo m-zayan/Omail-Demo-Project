@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="OmailModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepId" />
+          </Key>
+          <Property Name="DepId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DepName" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="E_Subject" Type="varchar" MaxLength="255" />
+          <Property Name="Body" Type="nvarchar" MaxLength="4000" />
+          <Property Name="SentTime" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="IsPublicEmail" Type="bit" />
+          <Property Name="IsGroupMail" Type="bit" />
+          <Property Name="IsPrivateEmail" Type="bit" />
+          <Property Name="Parent" Type="int" />
+        </EntityType>
+        <EntityType Name="EmpGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="45" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EmpName" Type="varchar" MaxLength="45" />
+          <Property Name="FristName" Type="varchar" MaxLength="45" />
+          <Property Name="LastName" Type="varchar" MaxLength="45" />
+          <Property Name="EmpEmail" Type="varchar" MaxLength="255" />
+          <Property Name="BirthDate" Type="date" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="20" />
+          <Property Name="Hash" Type="varchar" MaxLength="258" />
+          <Property Name="OrgCode" Type="varchar" MaxLength="258" />
+          <Property Name="Gender" Type="varchar" MaxLength="6" />
+          <Property Name="loginStatus" Type="bit" />
+          <Property Name="IsAdmin" Type="bit" />
+          <Property Name="InGroup" Type="bit" />
+          <Property Name="IsGroupManger" Type="bit" />
+          <Property Name="IsOrgManger" Type="bit" />
+          <Property Name="OrgId" Type="int" />
+          <Property Name="DepId" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Omail.dbo.Employee_has_Email' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Employee_has_Email">
+          <Key>
+            <PropertyRef Name="EmpId" />
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="EmailId" Type="int" Nullable="false" />
+          <Property Name="IsStarred" Type="bit" />
+          <Property Name="IsSnoozed" Type="bit" />
+          <Property Name="IsSpam" Type="bit" />
+          <Property Name="IsSeen" Type="bit" />
+          <Property Name="WasDeleted" Type="bit" />
+          <Property Name="IsSent" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Omail.dbo.Employee_In_Group' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Employee_In_Group">
+          <Key>
+            <PropertyRef Name="EmpId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="EmpId" Type="int" Nullable="false" />
+          <Property Name="GroupId" Type="int" Nullable="false" />
+          <Property Name="ProjectName" Type="varchar" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="OrgId" />
+          </Key>
+          <Property Name="OrgId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgName" Type="varchar" MaxLength="50" />
+          <Property Name="EstablishDate" Type="date" />
+          <Property Name="Vision_Statement" Type="nvarchar" MaxLength="4000" />
+          <Property Name="Org_Location" Type="varchar" MaxLength="64" />
+          <Property Name="Longitude" Type="geometry" />
+          <Property Name="Latitude" Type="geometry" />
+          <Property Name="OrgType" Type="varchar" MaxLength="20" />
+          <Property Name="HasOrgCode" Type="bit" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'Omail.dbo.Organization_has_Partner' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Organization_has_Partner">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+            <PropertyRef Name="OrgId" />
+          </Key>
+          <Property Name="PartnerId" Type="int" Nullable="false" />
+          <Property Name="OrgId" Type="int" Nullable="false" />
+          <Property Name="SharedVision" Type="nvarchar" MaxLength="4000" />
+        </EntityType>
+        <Association Name="FK__Email__Parent__45F365D3">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="Email1" Type="Self.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="Email1">
+              <PropertyRef Name="Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Email__4E88ABD4">
+          <End Role="Email" Type="Self.Email" Multiplicity="1" />
+          <End Role="Employee_has_Email" Type="Self.Employee_has_Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="Employee_has_Email">
+              <PropertyRef Name="EmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___EmpId__47DBAE45">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee_In_Group" Type="Self.Employee_In_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Employee_In_Group">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___EmpId__4D94879B">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee_has_Email" Type="Self.Employee_has_Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Employee_has_Email">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Group__48CFD27E">
+          <End Role="EmpGroup" Type="Self.EmpGroup" Multiplicity="1" />
+          <End Role="Employee_In_Group" Type="Self.Employee_In_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmpGroup">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="Employee_In_Group">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__DepId__4316F928">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__OrgId__4222D4EF">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Organizat__OrgId__4BAC3F29">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Organization_has_Partner" Type="Self.Organization_has_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Organization_has_Partner">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Organizat__Partn__4AB81AF0">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Organization_has_Partner" Type="Self.Organization_has_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Organization_has_Partner">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OmailModelStoreContainer">
+          <EntitySet Name="Department" EntityType="Self.Department" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Email" EntityType="Self.Email" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpGroup" EntityType="Self.EmpGroup" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Organization" EntityType="Self.Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee_has_Email" EntityType="Self.Employee_has_Email" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Employee_has_Email].[EmpId] AS [EmpId], 
+    [Employee_has_Email].[EmailId] AS [EmailId], 
+    [Employee_has_Email].[IsStarred] AS [IsStarred], 
+    [Employee_has_Email].[IsSnoozed] AS [IsSnoozed], 
+    [Employee_has_Email].[IsSpam] AS [IsSpam], 
+    [Employee_has_Email].[IsSeen] AS [IsSeen], 
+    [Employee_has_Email].[WasDeleted] AS [WasDeleted], 
+    [Employee_has_Email].[IsSent] AS [IsSent]
+    FROM [dbo].[Employee_has_Email] AS [Employee_has_Email]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Employee_In_Group" EntityType="Self.Employee_In_Group" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Employee_In_Group].[EmpId] AS [EmpId], 
+    [Employee_In_Group].[GroupId] AS [GroupId], 
+    [Employee_In_Group].[ProjectName] AS [ProjectName]
+    FROM [dbo].[Employee_In_Group] AS [Employee_In_Group]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Organization_has_Partner" EntityType="Self.Organization_has_Partner" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Organization_has_Partner].[PartnerId] AS [PartnerId], 
+    [Organization_has_Partner].[OrgId] AS [OrgId], 
+    [Organization_has_Partner].[SharedVision] AS [SharedVision]
+    FROM [dbo].[Organization_has_Partner] AS [Organization_has_Partner]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Email__Parent__45F365D3" Association="Self.FK__Email__Parent__45F365D3">
+            <End Role="Email" EntitySet="Email" />
+            <End Role="Email1" EntitySet="Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Email__4E88ABD4" Association="Self.FK__Employee___Email__4E88ABD4">
+            <End Role="Email" EntitySet="Email" />
+            <End Role="Employee_has_Email" EntitySet="Employee_has_Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___EmpId__47DBAE45" Association="Self.FK__Employee___EmpId__47DBAE45">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee_In_Group" EntitySet="Employee_In_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___EmpId__4D94879B" Association="Self.FK__Employee___EmpId__4D94879B">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Employee_has_Email" EntitySet="Employee_has_Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Group__48CFD27E" Association="Self.FK__Employee___Group__48CFD27E">
+            <End Role="EmpGroup" EntitySet="EmpGroup" />
+            <End Role="Employee_In_Group" EntitySet="Employee_In_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__DepId__4316F928" Association="Self.FK__Employee__DepId__4316F928">
+            <End Role="Department" EntitySet="Department" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__OrgId__4222D4EF" Association="Self.FK__Employee__OrgId__4222D4EF">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Organizat__OrgId__4BAC3F29" Association="Self.FK__Organizat__OrgId__4BAC3F29">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="Organization_has_Partner" EntitySet="Organization_has_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Organizat__Partn__4AB81AF0" Association="Self.FK__Organizat__Partn__4AB81AF0">
+            <End Role="Organization" EntitySet="Organization" />
+            <End Role="Organization_has_Partner" EntitySet="Organization_has_Partner" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="OmailModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="DepId" />
+          </Key>
+          <Property Name="DepId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DepName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__DepId__4316F928" FromRole="Department" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Email">
+          <Key>
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="E_Subject" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Body" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="SentTime" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IsPublicEmail" Type="Boolean" />
+          <Property Name="IsGroupMail" Type="Boolean" />
+          <Property Name="IsPrivateEmail" Type="Boolean" />
+          <Property Name="Parent" Type="Int32" />
+          <NavigationProperty Name="Email1" Relationship="Self.FK__Email__Parent__45F365D3" FromRole="Email" ToRole="Email1" />
+          <NavigationProperty Name="Email2" Relationship="Self.FK__Email__Parent__45F365D3" FromRole="Email1" ToRole="Email" />
+          <NavigationProperty Name="Employee_has_Email" Relationship="Self.FK__Employee___Email__4E88ABD4" FromRole="Email" ToRole="Employee_has_Email" />
+        </EntityType>
+        <EntityType Name="EmpGroup">
+          <Key>
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="GroupId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="GroupName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Employee_In_Group" Relationship="Self.FK__Employee___Group__48CFD27E" FromRole="EmpGroup" ToRole="Employee_In_Group" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="EmpId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EmpName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="FristName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="EmpEmail" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="BirthDate" Type="DateTime" Precision="0" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Hash" Type="String" MaxLength="258" FixedLength="false" Unicode="false" />
+          <Property Name="OrgCode" Type="String" MaxLength="258" FixedLength="false" Unicode="false" />
+          <Property Name="Gender" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+          <Property Name="loginStatus" Type="Boolean" />
+          <Property Name="IsAdmin" Type="Boolean" />
+          <Property Name="InGroup" Type="Boolean" />
+          <Property Name="IsGroupManger" Type="Boolean" />
+          <Property Name="IsOrgManger" Type="Boolean" />
+          <Property Name="OrgId" Type="Int32" />
+          <Property Name="DepId" Type="Int32" />
+          <NavigationProperty Name="Department" Relationship="Self.FK__Employee__DepId__4316F928" FromRole="Employee" ToRole="Department" />
+          <NavigationProperty Name="Employee_In_Group" Relationship="Self.FK__Employee___EmpId__47DBAE45" FromRole="Employee" ToRole="Employee_In_Group" />
+          <NavigationProperty Name="Employee_has_Email" Relationship="Self.FK__Employee___EmpId__4D94879B" FromRole="Employee" ToRole="Employee_has_Email" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK__Employee__OrgId__4222D4EF" FromRole="Employee" ToRole="Organization" />
+        </EntityType>
+        <EntityType Name="Organization">
+          <Key>
+            <PropertyRef Name="OrgId" />
+          </Key>
+          <Property Name="OrgId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EstablishDate" Type="DateTime" Precision="0" />
+          <Property Name="Vision_Statement" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Name="Org_Location" Type="String" MaxLength="64" FixedLength="false" Unicode="false" />
+          <Property Name="Longitude" Type="Geometry" />
+          <Property Name="Latitude" Type="Geometry" />
+          <Property Name="OrgType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="HasOrgCode" Type="Boolean" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__OrgId__4222D4EF" FromRole="Organization" ToRole="Employee" />
+          <NavigationProperty Name="Organization_has_Partner" Relationship="Self.FK__Organizat__OrgId__4BAC3F29" FromRole="Organization" ToRole="Organization_has_Partner" />
+          <NavigationProperty Name="Organization_has_Partner1" Relationship="Self.FK__Organizat__Partn__4AB81AF0" FromRole="Organization" ToRole="Organization_has_Partner" />
+        </EntityType>
+        <EntityType Name="Employee_has_Email">
+          <Key>
+            <PropertyRef Name="EmpId" />
+            <PropertyRef Name="EmailId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="EmailId" Type="Int32" Nullable="false" />
+          <Property Name="IsStarred" Type="Boolean" />
+          <Property Name="IsSnoozed" Type="Boolean" />
+          <Property Name="IsSpam" Type="Boolean" />
+          <Property Name="IsSeen" Type="Boolean" />
+          <Property Name="WasDeleted" Type="Boolean" />
+          <Property Name="IsSent" Type="Boolean" />
+          <NavigationProperty Name="Email" Relationship="Self.FK__Employee___Email__4E88ABD4" FromRole="Employee_has_Email" ToRole="Email" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee___EmpId__4D94879B" FromRole="Employee_has_Email" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Employee_In_Group">
+          <Key>
+            <PropertyRef Name="EmpId" />
+            <PropertyRef Name="GroupId" />
+          </Key>
+          <Property Name="EmpId" Type="Int32" Nullable="false" />
+          <Property Name="GroupId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="EmpGroup" Relationship="Self.FK__Employee___Group__48CFD27E" FromRole="Employee_In_Group" ToRole="EmpGroup" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Employee___EmpId__47DBAE45" FromRole="Employee_In_Group" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Organization_has_Partner">
+          <Key>
+            <PropertyRef Name="PartnerId" />
+            <PropertyRef Name="OrgId" />
+          </Key>
+          <Property Name="PartnerId" Type="Int32" Nullable="false" />
+          <Property Name="OrgId" Type="Int32" Nullable="false" />
+          <Property Name="SharedVision" Type="String" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Organization" Relationship="Self.FK__Organizat__OrgId__4BAC3F29" FromRole="Organization_has_Partner" ToRole="Organization" />
+          <NavigationProperty Name="Organization1" Relationship="Self.FK__Organizat__Partn__4AB81AF0" FromRole="Organization_has_Partner" ToRole="Organization" />
+        </EntityType>
+        <Association Name="FK__Employee__DepId__4316F928">
+          <End Role="Department" Type="Self.Department" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Department">
+              <PropertyRef Name="DepId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="DepId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Email__Parent__45F365D3">
+          <End Role="Email" Type="Self.Email" Multiplicity="0..1" />
+          <End Role="Email1" Type="Self.Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="Email1">
+              <PropertyRef Name="Parent" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Email__4E88ABD4">
+          <End Role="Email" Type="Self.Email" Multiplicity="1" />
+          <End Role="Employee_has_Email" Type="Self.Employee_has_Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Email">
+              <PropertyRef Name="EmailId" />
+            </Principal>
+            <Dependent Role="Employee_has_Email">
+              <PropertyRef Name="EmailId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___Group__48CFD27E">
+          <End Role="EmpGroup" Type="Self.EmpGroup" Multiplicity="1" />
+          <End Role="Employee_In_Group" Type="Self.Employee_In_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="EmpGroup">
+              <PropertyRef Name="GroupId" />
+            </Principal>
+            <Dependent Role="Employee_In_Group">
+              <PropertyRef Name="GroupId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___EmpId__47DBAE45">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee_In_Group" Type="Self.Employee_In_Group" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Employee_In_Group">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee___EmpId__4D94879B">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Employee_has_Email" Type="Self.Employee_has_Email" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="EmpId" />
+            </Principal>
+            <Dependent Role="Employee_has_Email">
+              <PropertyRef Name="EmpId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__OrgId__4222D4EF">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="0..1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Organizat__OrgId__4BAC3F29">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Organization_has_Partner" Type="Self.Organization_has_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Organization_has_Partner">
+              <PropertyRef Name="OrgId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Organizat__Partn__4AB81AF0">
+          <End Role="Organization" Type="Self.Organization" Multiplicity="1" />
+          <End Role="Organization_has_Partner" Type="Self.Organization_has_Partner" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Organization">
+              <PropertyRef Name="OrgId" />
+            </Principal>
+            <Dependent Role="Organization_has_Partner">
+              <PropertyRef Name="PartnerId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="OmailEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Departments" EntityType="Self.Department" />
+          <EntitySet Name="Emails" EntityType="Self.Email" />
+          <EntitySet Name="EmpGroups" EntityType="Self.EmpGroup" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Organizations" EntityType="Self.Organization" />
+          <EntitySet Name="Employee_has_Email" EntityType="Self.Employee_has_Email" />
+          <EntitySet Name="Employee_In_Group" EntityType="Self.Employee_In_Group" />
+          <EntitySet Name="Organization_has_Partner" EntityType="Self.Organization_has_Partner" />
+          <AssociationSet Name="FK__Employee__DepId__4316F928" Association="Self.FK__Employee__DepId__4316F928">
+            <End Role="Department" EntitySet="Departments" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Email__Parent__45F365D3" Association="Self.FK__Email__Parent__45F365D3">
+            <End Role="Email" EntitySet="Emails" />
+            <End Role="Email1" EntitySet="Emails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Email__4E88ABD4" Association="Self.FK__Employee___Email__4E88ABD4">
+            <End Role="Email" EntitySet="Emails" />
+            <End Role="Employee_has_Email" EntitySet="Employee_has_Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___Group__48CFD27E" Association="Self.FK__Employee___Group__48CFD27E">
+            <End Role="EmpGroup" EntitySet="EmpGroups" />
+            <End Role="Employee_In_Group" EntitySet="Employee_In_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___EmpId__47DBAE45" Association="Self.FK__Employee___EmpId__47DBAE45">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee_In_Group" EntitySet="Employee_In_Group" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee___EmpId__4D94879B" Association="Self.FK__Employee___EmpId__4D94879B">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Employee_has_Email" EntitySet="Employee_has_Email" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__OrgId__4222D4EF" Association="Self.FK__Employee__OrgId__4222D4EF">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Organizat__OrgId__4BAC3F29" Association="Self.FK__Organizat__OrgId__4BAC3F29">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="Organization_has_Partner" EntitySet="Organization_has_Partner" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Organizat__Partn__4AB81AF0" Association="Self.FK__Organizat__Partn__4AB81AF0">
+            <End Role="Organization" EntitySet="Organizations" />
+            <End Role="Organization_has_Partner" EntitySet="Organization_has_Partner" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="OmailModelStoreContainer" CdmEntityContainer="OmailEntities">
+          <EntitySetMapping Name="Departments">
+            <EntityTypeMapping TypeName="OmailModel.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+                <ScalarProperty Name="DepName" ColumnName="DepName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Emails">
+            <EntityTypeMapping TypeName="OmailModel.Email">
+              <MappingFragment StoreEntitySet="Email">
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="E_Subject" ColumnName="E_Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="SentTime" ColumnName="SentTime" />
+                <ScalarProperty Name="IsPublicEmail" ColumnName="IsPublicEmail" />
+                <ScalarProperty Name="IsGroupMail" ColumnName="IsGroupMail" />
+                <ScalarProperty Name="IsPrivateEmail" ColumnName="IsPrivateEmail" />
+                <ScalarProperty Name="Parent" ColumnName="Parent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpGroups">
+            <EntityTypeMapping TypeName="OmailModel.EmpGroup">
+              <MappingFragment StoreEntitySet="EmpGroup">
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="OmailModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="EmpName" ColumnName="EmpName" />
+                <ScalarProperty Name="FristName" ColumnName="FristName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+                <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Hash" ColumnName="Hash" />
+                <ScalarProperty Name="OrgCode" ColumnName="OrgCode" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="loginStatus" ColumnName="loginStatus" />
+                <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+                <ScalarProperty Name="InGroup" ColumnName="InGroup" />
+                <ScalarProperty Name="IsGroupManger" ColumnName="IsGroupManger" />
+                <ScalarProperty Name="IsOrgManger" ColumnName="IsOrgManger" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="DepId" ColumnName="DepId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organizations">
+            <EntityTypeMapping TypeName="OmailModel.Organization">
+              <MappingFragment StoreEntitySet="Organization">
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="OrgName" ColumnName="OrgName" />
+                <ScalarProperty Name="EstablishDate" ColumnName="EstablishDate" />
+                <ScalarProperty Name="Vision_Statement" ColumnName="Vision_Statement" />
+                <ScalarProperty Name="Org_Location" ColumnName="Org_Location" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="OrgType" ColumnName="OrgType" />
+                <ScalarProperty Name="HasOrgCode" ColumnName="HasOrgCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_has_Email">
+            <EntityTypeMapping TypeName="OmailModel.Employee_has_Email">
+              <MappingFragment StoreEntitySet="Employee_has_Email">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="IsStarred" ColumnName="IsStarred" />
+                <ScalarProperty Name="IsSnoozed" ColumnName="IsSnoozed" />
+                <ScalarProperty Name="IsSpam" ColumnName="IsSpam" />
+                <ScalarProperty Name="IsSeen" ColumnName="IsSeen" />
+                <ScalarProperty Name="WasDeleted" ColumnName="WasDeleted" />
+                <ScalarProperty Name="IsSent" ColumnName="IsSent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee_In_Group">
+            <EntityTypeMapping TypeName="OmailModel.Employee_In_Group">
+              <MappingFragment StoreEntitySet="Employee_In_Group">
+                <ScalarProperty Name="EmpId" ColumnName="EmpId" />
+                <ScalarProperty Name="GroupId" ColumnName="GroupId" />
+                <ScalarProperty Name="ProjectName" ColumnName="ProjectName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Organization_has_Partner">
+            <EntityTypeMapping TypeName="OmailModel.Organization_has_Partner">
+              <MappingFragment StoreEntitySet="Organization_has_Partner">
+                <ScalarProperty Name="PartnerId" ColumnName="PartnerId" />
+                <ScalarProperty Name="OrgId" ColumnName="OrgId" />
+                <ScalarProperty Name="SharedVision" ColumnName="SharedVision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

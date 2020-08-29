@@ -27,20 +27,20 @@
         <Components:BlueGradientRect Grid.Row="0" Width="1400" Height="500"/>
         <Components:AppPanel VerticalAlignment="Top" Grid.Row="0"/>
 
-        <Image Width="100" Source="{DynamicResource User}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50"/>
+        <Image Width="100" Source="{StaticResource User}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50"/>
 
         <!--Sigh In Rectangle-->
         <Border Width="680" Height="500" HorizontalAlignment="Center" Background="White" CornerRadius="70,70,70,70" Grid.RowSpan="2" Margin="0,70,0,0">
             <StackPanel>
                 <!--Sign In & Sign Up Navigation Button-->
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton IsChecked="True"  Content="Sign In" Style="{DynamicResource MaterialDesignTabRadioButton}" Height="30" Width="250" HorizontalContentAlignment="Center" Margin="70,0,0,0" />
-                    <RadioButton Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" x:Name="SignUp"  Content="Sign Up" Style="{DynamicResource MaterialDesignTabRadioButton}"  Height="30" Width="250" HorizontalContentAlignment="Center" Margin="0,0,0,0" />
+                    <RadioButton IsChecked="True" Content="Sign In" Style="{StaticResource MaterialDesignTabRadioButton}" Height="30" Width="250" HorizontalContentAlignment="Center" Margin="70,0,0,0" />
+                    <RadioButton x:Name="SignUp"  Content="Sign Up" Style="{StaticResource MaterialDesignTabRadioButton}"  Height="30" Width="250" HorizontalContentAlignment="Center" Margin="0,0,0,0" />
                 </StackPanel>
 
                 <StackPanel>
                     <!--Sign In Labels-->
-                    <Components:TextLabel   x:Name="Username"  Hint="Username" HorizontalAlignment="Center" Margin="0,100,0,0"/>
+                    <Components:TextLabel   x:Name="Email"  Hint="Email" HorizontalAlignment="Center" Margin="0,100,0,0"/>
                     <Components:PasswordLabel x:Name="Password"  Hint="Password"/>
                 </StackPanel>
 
@@ -48,7 +48,7 @@
 
                     <TextBlock><Hyperlink><Run Text="Forgot Password ?"/></Hyperlink></TextBlock>
                     <CheckBox  Margin="0,20,0,0"  Content="Keep me signed in" />
-                    <Button Margin="0,50,0,0" Style="{DynamicResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Bottom" Width="100" Height="25" Content="Sign In"/>
+                    <Button Click="SignIn_Button_Click" Margin="0,50,0,0" Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Bottom" Width="100" Height="25" Content="Sign In"/>
 
 
                 </StackPanel>

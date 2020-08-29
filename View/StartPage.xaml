@@ -27,11 +27,11 @@
 
         <StackPanel Height="400" HorizontalAlignment="Left" Margin="50,100,0,0">
 
-            <TextBlock Style="{DynamicResource MaterialDesignButtonTextBlock}" TextAlignment="Center" Text="Existing Organization" Foreground="#66CCFF" VerticalAlignment="Top" FontSize="26"
+            <TextBlock Style="{StaticResource MaterialDesignButtonTextBlock}" TextAlignment="Center" Text="Existing Organization" Foreground="#66CCFF" VerticalAlignment="Top" FontSize="26"
                     />
-            <RadioButton Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Style="{DynamicResource MaterialDesignTabRadioButton}" x:Name="ExistingOrgBTN" Height="300" Width="300" Margin="20">
+            <RadioButton Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"  Style="{StaticResource MaterialDesignTabRadioButton}"  x:Name="ExistingOrgBTN" Height="300" Width="300" Margin="20">
                 <RadioButton.Content>
-                    <Image Source="{DynamicResource ExistOrg}" Stretch="Fill"/>
+                    <Image Source="{StaticResource ExistOrg}" Stretch="Fill"/>
                 </RadioButton.Content>
             </RadioButton>
             <Components:BlueGradientRect Width="700"/>
@@ -39,11 +39,11 @@
 
         <StackPanel Height="400" HorizontalAlignment="Right" Margin="0,100,0,0">
 
-            <TextBlock Style="{DynamicResource MaterialDesignButtonTextBlock}" TextAlignment="Center" Text="New Organization" Foreground="#66CCFF" VerticalAlignment="Top" FontSize="26"
+            <TextBlock Style="{StaticResource MaterialDesignButtonTextBlock}" TextAlignment="Center" Text="New Organization" Foreground="#66CCFF" VerticalAlignment="Top" FontSize="26"
                     />
-            <RadioButton Style="{DynamicResource MaterialDesignTabRadioButton}" x:Name="NewOrg" Height="300" Width="300" Margin="20">
+            <RadioButton  Style="{StaticResource MaterialDesignTabRadioButton}" x:Name="NewOrg" Height="300" Width="300" Margin="20">
                 <RadioButton.Content>
-                    <Image Source="{DynamicResource NewOrg}" Stretch="Fill"/>
+                    <Image Source="{StaticResource NewOrg}" Stretch="Fill"/>
                 </RadioButton.Content>
             </RadioButton>
             <Components:BlueGradientRect Width="700"/>
@@ -51,7 +51,7 @@
 
         <RadioButton x:Name="ButtomText"  HorizontalAlignment="Center" VerticalAlignment="Bottom" Style="{DynamicResource MaterialDesignToolRadioButton}">
             <TextBlock>
-                <TextBlock FontSize="15" Style="{DynamicResource MaterialDesignButtonTextBlock}">
+                <TextBlock FontSize="15" Style="{StaticResource MaterialDesignButtonTextBlock}">
                     <Run FontWeight="Bold" Text="Omail -" />
                     <Run Text=" Organization mailing system under your control" FontStyle="Italic" />
                 </TextBlock>

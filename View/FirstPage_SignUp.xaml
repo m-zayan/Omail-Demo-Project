@@ -27,28 +27,29 @@
         <Components:BlueGradientRect Grid.Row="0" Width="1400" Height="500"/>
         <Components:AppPanel VerticalAlignment="Top" Grid.Row="0"/>
 
-        <Image Width="100" Source="{DynamicResource User}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50"/>
+        <Image Width="100" Source="{StaticResource User}" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="50"/>
 
         <!--Sigh In Rectangle-->
         <Border Width="680" Height="500" HorizontalAlignment="Center" Background="White" CornerRadius="70,70,70,70" Grid.RowSpan="2" Margin="0,70,0,0">
             <StackPanel>
                 <!--Sign In & Sign Up Navigation Button-->
                 <StackPanel Orientation="Horizontal">
-                    <RadioButton Content="Sign In" Style="{DynamicResource MaterialDesignTabRadioButton}" Height="30" Width="250" HorizontalContentAlignment="Center" Margin="70,0,0,0" />
-                    <RadioButton IsChecked="True"   Content="Sign Up" Style="{DynamicResource MaterialDesignTabRadioButton}"  Height="30" Width="250" HorizontalContentAlignment="Center" Margin="0,0,0,0" />
+                    <RadioButton IsEnabled="False" Content="Sign In" Style="{StaticResource MaterialDesignTabRadioButton}" Height="30" Width="250" HorizontalContentAlignment="Center" Margin="70,0,0,0" />
+                    <RadioButton IsChecked="True" Content="Sign Up" Style="{StaticResource MaterialDesignTabRadioButton}"  Height="30" Width="250" HorizontalContentAlignment="Center" Margin="0,0,0,0" />
                 </StackPanel>
 
                 <StackPanel>
                     <!--Sign In Labels-->
-                    <Components:TextLabel   x:Name="Username"  Hint="Username" HorizontalAlignment="Center" Margin="0,100,0,0"/>
+                    <Components:TextLabel   x:Name="FirstName"  Hint="First Name" HorizontalAlignment="Center" Margin="0,100,0,0"/>
+                    <Components:TextLabel x:Name="LastName"  Hint="Last Name"/>
                     <Components:TextLabel x:Name="Email"  Hint="Email"/>
                     <Components:PasswordLabel x:Name="Password"  Hint="Password"/>
                     <Components:PasswordLabel x:Name="VerifyPassword"  Hint="Verify Password"/>
                 </StackPanel>
 
-                <StackPanel Width="600" Height="200" Margin="0,50,0,0">
+                <StackPanel Width="Auto" Height="150"  Margin="30,0,20,0">
 
-                    <Button Command="{x:Static materialDesign:Transitioner.MoveNextCommand}" Margin="300,80,0,0" Style="{DynamicResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Bottom" Width="100" Height="25" Content="Next " />
+                    <Button Click="addData" Margin="400,80,100,0" Style="{StaticResource MaterialDesignRaisedDarkButton}" VerticalAlignment="Bottom" Width="100" Height="25" Content="Next " />
 
                 </StackPanel>
 
@@ -60,3 +61,5 @@
 
 
 </UserControl>
+
+<!--Command="{x:Static materialDesign:Transitioner.MoveNextCommand}"-->

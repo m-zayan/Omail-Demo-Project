@@ -30,28 +30,5 @@ namespace Omail.Components
         {
             System.Windows.Application.Current.Shutdown();
         }
-        private void WindowMaximize(object sender, RoutedEventArgs e)
-        {
-           
-            if (Application.Current.MainWindow.WindowState == WindowState.Normal)
-            {
-                Application.Current.MainWindow.WindowState = WindowState.Maximized;
-            }
-            else
-            {
-                Application.Current.MainWindow.WindowState = WindowState.Normal;
-            }
-        }
-        private void WindowMinimize(object sender, RoutedEventArgs e)
-        {
-            if (Application.Current.MainWindow.WindowState == WindowState.Normal)
-            {
-                Application.Current.MainWindow.WindowState = WindowState.Minimized;
-            }
-            else
-            {
-                Application.Current.MainWindow.WindowState = WindowState.Normal;
-            }
-        }
     }
 }
