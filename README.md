@@ -12,5 +12,7 @@ _________
 __________________
 <pre>
   &#9673; Mohamed Osama Mohamed Zayan 
-  &#9673; Moataz Gamal Abdel Gawad El Sayed  
+  &#9673; Moataz Gamal Abdel Gawad El Sayed 
+  &#9673; Mohamed Ali ELfeky 
+  &#9673; Omar Hafez
 </pre>
